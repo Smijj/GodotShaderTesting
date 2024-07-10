@@ -1,10 +1,18 @@
-[gd_scene load_steps=4 format=3 uid="uid://cn4rnifq5bntf"]
+[gd_scene load_steps=6 format=3 uid="uid://cn4rnifq5bntf"]
 
-[ext_resource type="Shader" path="res://DSmyth/Shaders/firstShader.gdshader" id="1_pweq6"]
+[ext_resource type="Shader" path="res://DSmyth/Shaders/FireBall.gdshader" id="1_h0avu"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_5s4gh"]
+fractal_lacunarity = 1.46
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_wow8i"]
+noise = SubResource("FastNoiseLite_5s4gh")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_qmgao"]
 render_priority = 0
-shader = ExtResource("1_pweq6")
+shader = ExtResource("1_h0avu")
+shader_parameter/divider = 1.49012e-08
+shader_parameter/sampler = SubResource("NoiseTexture2D_wow8i")
 
 [sub_resource type="SphereMesh" id="SphereMesh_3psae"]
 
