@@ -13,3 +13,13 @@ shader = ExtResource("1_pweq6")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 material_override = SubResource("ShaderMaterial_qmgao")
 mesh = SubResource("SphereMesh_3psae")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5.49392)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.77175)
+light_energy = 2.0
+spot_range = 20.0
+spot_attenuation = 0.574349
+spot_angle = 70.0
