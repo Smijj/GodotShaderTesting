@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://cn4rnifq5bntf"]
+
+[ext_resource type="Shader" path="res://DSmyth/Shaders/firstShader.gdshader" id="1_pweq6"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qmgao"]
+render_priority = 0
+shader = ExtResource("1_pweq6")
+
+[sub_resource type="SphereMesh" id="SphereMesh_3psae"]
+
+[node name="Main" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+material_override = SubResource("ShaderMaterial_qmgao")
+mesh = SubResource("SphereMesh_3psae")
