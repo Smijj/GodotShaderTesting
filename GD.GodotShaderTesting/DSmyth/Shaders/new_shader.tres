@@ -1,0 +1,68 @@
+[gd_resource type="VisualShader" load_steps=5 format=3 uid="uid://dfp4wpql3bato"]
+
+[sub_resource type="VisualShaderNodeColorConstant" id="VisualShaderNodeColorConstant_556vo"]
+output_port_for_preview = 0
+constant = Color(0.327647, 0.279543, 0.847347, 1)
+
+[sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_g4u7x"]
+output_port_for_preview = 0
+input_name = "view_matrix"
+
+[sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_wd4po"]
+input_name = "color"
+
+[sub_resource type="VisualShaderNodeVaryingSetter" id="VisualShaderNodeVaryingSetter_qwxdk"]
+varying_name = "fgh"
+
+[resource]
+code = "shader_type spatial;
+render_mode blend_mix, depth_draw_opaque, cull_back, diffuse_lambert, specular_schlick_ggx;
+
+
+// Varyings
+varying float var_fgh;
+varying float var_Test;
+
+
+
+
+void vertex() {
+// Input:2
+	vec4 n_out2p0 = COLOR;
+
+
+// Output:0
+	VERTEX = vec3(n_out2p0.xyz);
+
+
+// VaryingSetter:3
+	var_fgh = n_out2p0.x;
+
+
+	var_Test = 0.0;
+}
+
+void fragment() {
+// ColorConstant:4
+	vec4 n_out4p0 = vec4(0.327647, 0.279543, 0.847347, 1.000000);
+
+
+// Output:0
+	ALBEDO = vec3(n_out4p0.xyz);
+
+
+}
+"
+graph_offset = Vector2(-410.146, 7.80894)
+varyings/fgh = "0,0"
+varyings/Test = "0,0"
+nodes/vertex/2/node = SubResource("VisualShaderNodeInput_wd4po")
+nodes/vertex/2/position = Vector2(-540, 200)
+nodes/vertex/3/node = SubResource("VisualShaderNodeVaryingSetter_qwxdk")
+nodes/vertex/3/position = Vector2(-140, 320)
+nodes/vertex/connections = PackedInt32Array(2, 0, 0, 0, 2, 0, 3, 0)
+nodes/fragment/4/node = SubResource("VisualShaderNodeColorConstant_556vo")
+nodes/fragment/4/position = Vector2(-480, 140)
+nodes/fragment/5/node = SubResource("VisualShaderNodeInput_g4u7x")
+nodes/fragment/5/position = Vector2(-240, 320)
+nodes/fragment/connections = PackedInt32Array(4, 0, 0, 0)
